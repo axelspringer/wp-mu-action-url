@@ -1,0 +1,20 @@
+{
+    "name": "muplugin/asse-action-url",
+    "type": "wordpress-muplugin",
+    "description": "asse action url",
+    "keywords": [
+        "wordpress",
+        "muplugin"
+    ],
+    "authors": [
+        {
+            "name": "Developer",
+            "homepage": "http://www.axelspringer.de"
+        }
+    ],
+    "homepage": "https://as-stash.axelspringer.de/projects/WPMUP/repos/asse-action-url/browse",
+    "license": "proprietary",
+    "extra": {
+        "installer-name": "asse-action-url"
+    }
+}
