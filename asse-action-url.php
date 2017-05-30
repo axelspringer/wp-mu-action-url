@@ -7,7 +7,7 @@ class Asse_Action_Url {
   public function __construct() {
     // start buffer
     add_action( 'wp_head', function() {
-      ob_start( array( $this, replace_urls ) );
+      ob_start( array( $this, 'replace_urls' ) );
     });
 
     add_action( 'wp_footer', function() {
