@@ -5,6 +5,14 @@ defined( 'ABSPATH' ) || exit;
 class Asse_Action_Url {
 
   public function __construct() {
+    if ( ! defined( 'ASSE_URL_REPLACEMENT' ) || false === ASSE_URL_REPLACEMENT ) {
+      return;
+    }
+
+    if ( ! defined( 'STATIC_URL' ) || empty( 'STATIC_URL' ) ) {
+      return;
+    }
+
     // start buffer
     add_action( 'wp_head', function() {
       ob_start( array( $this, 'replace_urls' ) );
@@ -16,16 +24,20 @@ class Asse_Action_Url {
   }
 
   public function replace_urls( $buffer, $args ) {
-    if ( ! defined( 'STATIC_URL' ) || empty( 'STATIC_URL' ) ) {
-      return $buffer;
-    }
-
-    if ( ! defined( 'ASSE_URL_REPLACEMENT' ) || false === ASSE_URL_REPLACEMENT ) {
-      return $buffer;
-    }
-
     $static_host = STATIC_URL;
     $origin_host = ORIGIN_HOST;
+
+    // this is for old style, a hook
+    if ( defined( 'ASSE_URL_REPLACEMENT_FIX' ) && true === ASSE_URL_REPLACEMENT_FIX ) {
+      $old_src = '/(["\'])(\/?data\/uploads[^\\1]*?)\\1/i';
+
+      $buffer = preg_replace_callback( $old_src, function( $match ) use ( $static_host, $origin_host ) {
+        $path = substr($match[2], 0, 1) === '/' ? $match[2] : '/' . $match[2];
+        return $static_host . $path . $match[1];
+      }, $buffer );
+
+      return $buffer;
+    }
 
     $buffer = preg_replace_callback( sprintf( '/%s/i', preg_quote( $static_host, '/' ) ), function( $match ) use ( $static_host, $origin_host ) {
       return str_replace( $static_host, $origin_host, $match[0] );
@@ -37,4 +49,3 @@ class Asse_Action_Url {
 }
 
 $asse_action_url = new Asse_Action_Url();
-
