@@ -29,11 +29,11 @@ class Asse_Action_Url {
 
     // this is for old style, a hook
     if ( defined( 'ASSE_URL_REPLACEMENT_FIX' ) && true === ASSE_URL_REPLACEMENT_FIX ) {
-      $old_src = '/(["\'])(\/?data\/uploads[^\\1]*?)\\1/i';
+      $old_src = '/src\s*=\s*"(\/data\/uploads.+?)"/i';
 
       $buffer = preg_replace_callback( $old_src, function( $match ) use ( $static_host, $origin_host ) {
-        $path = substr($match[2], 0, 1) === '/' ? $match[2] : '/' . $match[2];
-        return $static_host . $path . $match[1];
+        $path = substr($match[1], 0, 1) === '/' ? $match[1] : '/' . $match[1];
+        return sprintf('src="%s"', $static_host . $path . $match[2]);
       }, $buffer );
 
       return $buffer;
