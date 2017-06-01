@@ -28,7 +28,9 @@ class Asse_Action_Url {
   }
 
   public function end_ob() {
-    ob_end_flush();
+    if ( ob_get_level() > 0 ) {
+      ob_end_flush();
+    }
   }
 
   public function replace_urls( $buffer, $args ) {
