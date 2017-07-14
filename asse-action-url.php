@@ -19,8 +19,8 @@ class Asse_Action_Url {
     $this->replace_urls = ASSE_URL_REPLACEMENT;
     $this->origin_host = ORIGIN_HOST;
 
-    add_action( 'template_redirect', array( $this, 'start_ob' ), 99 );
-    add_action( 'shutdown', array( $this, 'end_ob' ), 99 );
+    add_action( 'template_redirect', array( $this, 'start_ob' ), 97 );
+    add_action( 'shutdown', array( $this, 'end_ob' ), 97 );
   }
 
   public function start_ob() {
