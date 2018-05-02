@@ -1,7 +1,7 @@
 {
-    "name": "muplugin/asse-action-url",
+    "name": "axelspringer/asse-action-url",
     "type": "wordpress-muplugin",
-    "description": "asse action url",
+    "description": "axelspringer action url",
     "keywords": [
         "wordpress",
         "muplugin"
@@ -12,9 +12,9 @@
             "homepage": "http://www.axelspringer.de"
         }
     ],
-    "homepage": "https://as-stash.axelspringer.de/projects/WPMUP/repos/asse-action-url/browse",
-    "license": "proprietary",
+    "homepage": "https://github.com/axelspringer/asse-action-url/browse",
+    "license": "Apache-2.0",
     "extra": {
-        "installer-name": "asse-action-url"
+        "installer-name": "axelspringer-action-url"
     }
 }

@@ -2,7 +2,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-class Asse_Action_Url {
+class Axelspringer_Action_Url {
 
   public $replace_urls;
   public $origin_host;
@@ -39,4 +39,4 @@ class Asse_Action_Url {
 
 }
 
-$asse_action_url = new Asse_Action_Url();
+$axelspringer_action_url = new Axelspringer_Action_Url();
